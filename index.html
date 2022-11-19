@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>HANGMAN</h1>
+    <main>
+        <input type="button" value="START" id="btnStart" onclick="start()">
+
+        <div id="guess">
+            <input type="text" id="guessLetter">
+            <p style="font-size: 1rem;">Guess a letter</p>
+            <input type="button" value="GUESS">
+        </div>
+
+        <div id="res"></div>
+    </main>
+</body>
+<script src="./script.js"></script>
+</html>
