@@ -17,6 +17,7 @@ function start(){
     document.getElementById('btnStart').style.display = "none";
     document.getElementById('res').style.display = "flex";
     document.getElementById('guess').style.display = "flex";
+    document.getElementById('guessLetter').focus();
     console.log(randomWord);
     letters.map(letter => document.getElementById('res').innerHTML += "_ ");
 };
