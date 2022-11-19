@@ -73,5 +73,30 @@ input {
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
+    font-size: 1rem;
     padding: 15px;
+}
+
+#mistakes {
+    display: none;
+    font-size: 1rem;
+    text-align: center;
+    margin: 10px;
+}
+
+#finalMsg {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnPlayAgain {
+    margin: 15px;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    border-radius: 20px;   
 }

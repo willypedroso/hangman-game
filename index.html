@@ -9,17 +9,22 @@
 </head>
 <body>
     <h1>HANGMAN</h1>
-    <main>
+    <main id="main">
         <input type="button" value="START" id="btnStart" onclick="start()">
 
         <div id="guess">
             <input type="text" id="guessLetter">
-            <p style="font-size: 1.2rem;">Guess a letter</p>
-            <input type="button" id="guessBtn" value="GUESS">
+            <p style="font-size: 1.2rem;">Guess a letter:</p>
+            <input type="button" id="guessBtn" value="GUESS" onclick="guess()">
         </div>
 
         <div id="res"></div>
+
+        <div id="mistakes"></div>
     </main>
+    <div id="finalMsg">
+        <input type="button" value="PLAY AGAIN" id="btnPlayAgain" onclick="start()">
+    </div>
 </body>
 <script src="./script.js"></script>
 </html>
