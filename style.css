@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: linear-gradient(to bottom, rgb(109, 34, 34), #000);
+    background-image: linear-gradient(to bottom right, rgb(158, 68, 68), rgb(83, 0, 0));
     background-attachment: fixed;
     font-family: 'Sono', sans-serif;
     font-size: 2rem;
@@ -74,6 +74,7 @@ input {
     flex-wrap: wrap;
     text-align: center;
     font-size: 1rem;
+    font-weight: bolder;
     padding: 15px;
 }
 
