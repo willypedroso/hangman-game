@@ -13,19 +13,25 @@ const words = [
 var letters = [];
 var emptyLetters = [];
 var mistakes = 0;
+var numLetters = 0;
+var numHits = 0;
 
 const res = document.getElementById('res');
 const mistakesDiv = document.getElementById('mistakes');
 
 function start(){
     document.getElementById('main').style.display = "flex";
+    document.getElementById('gameTitle').style.display = "block";
     mistakesDiv.style.display = "none";
+    emptyLetters = [];
     res.innerHTML = "";
     mistakes = 0;
+    numHits = 0;
 
     var random = Math.floor(Math.random()*words.length);
     var randomWord = words[random];
     letters = randomWord.split("");
+    numLetters = letters.length;
     for(i=0;i<letters.length;i++){
         emptyLetters.push("_ ");
     };
@@ -37,7 +43,7 @@ function start(){
     document.getElementById('guessLetter').focus();
     console.log(randomWord);
     emptyLetters.map(letter => res.innerHTML += letter);
-    document.getElementById('finalMsg').style.display = "none";
+    document.getElementById('final').style.display = "none";
 };
 
 function guess(){
@@ -47,6 +53,7 @@ function guess(){
     if(letters.includes(guessLetter)){
         let spot = letters.indexOf(guessLetter);
         emptyLetters.splice(spot, 1, `${guessLetter} `);
+        numHits++
         res.innerHTML = "";
         emptyLetters.map(letter => res.innerHTML += letter);
         document.getElementById('guessLetter').value = "";
@@ -54,8 +61,9 @@ function guess(){
     } else {
         mistakes++
         if(mistakes == 6){
-            document.getElementById('finalMsg').style.display = "flex";
-            document.getElementById('finalMsg').innerHTML += "YOU LOSE!";
+            document.getElementById('final').style.display = "flex";
+            document.getElementById('gameTitle').style.display = "none";
+            document.getElementById('finalMsg').innerHTML = "YOU LOSE!";
             document.getElementById('main').style.display = "none";
         } else {
             mistakesDiv.innerHTML = `Wrong! You still have ${6-mistakes} tries`;
@@ -63,4 +71,10 @@ function guess(){
             document.getElementById('guessLetter').focus();
         }
     };
+    if(numHits == numLetters){
+        document.getElementById('final').style.display = "flex";
+        document.getElementById('gameTitle').style.display = "none";
+        document.getElementById('finalMsg').innerHTML = "CONGRATS! YOU WON!";
+        document.getElementById('main').style.display = "none";
+    }
 };
