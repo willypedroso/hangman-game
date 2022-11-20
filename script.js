@@ -7,7 +7,13 @@ const words = [
     "JAVASCRIPT",
     "HTML",
     "CSS",
-    "TAILWIND"
+    "TAILWIND",
+    "PYTHON",
+    "VITE",
+    "NEXT",
+    "JAVA",
+    "SWIFT",
+    "EXPRESS"
 ];
 
 var letters = [];
