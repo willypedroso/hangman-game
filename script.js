@@ -74,32 +74,38 @@ function guess(){
         mistakesDiv.style.display = "block";
         
         if(letters.includes(guessLetter)){
-            let howMuch = letters.filter(x => x === guessLetter).length;
-            console.log(howMuch);
-            spot1 = letters.indexOf(guessLetter);
-            emptyLetters.splice(spot1, 1, `${guessLetter} `);
-            if(howMuch > 1){
-                spot2 = letters.indexOf(guessLetter, spot1+1);
-                emptyLetters.splice(spot2, 1, `${guessLetter} `);
-            } if(howMuch > 2){
-                spot3 = letters.indexOf(guessLetter, spot2+1);
-                emptyLetters.splice(spot3, 1, `${guessLetter} `);
-            } if(howMuch > 3){
-                spot4 = letters.indexOf(guessLetter, spot3+1);
-                emptyLetters.splice(spot4, 1, `${guessLetter} `);
-            } if(howMuch > 4){
-                spot5 = letters.indexOf(guessLetter, spot4+1);
-                emptyLetters.splice(spot5, 1, `${guessLetter} `);
-            } if(howMuch > 5){
-                spot6 = letters.indexOf(guessLetter, spot5+1);
-                emptyLetters.splice(spot6, 1, `${guessLetter} `);
+            if(emptyLetters.includes(`${guessLetter} `)){
+                alert('You already got this one right! Try another letter...');
+                document.getElementById('guessLetter').value = "";
+                document.getElementById('guessLetter').focus();
+            } else {
+                let howMuch = letters.filter(x => x === guessLetter).length;
+                console.log(howMuch);
+                spot1 = letters.indexOf(guessLetter);
+                emptyLetters.splice(spot1, 1, `${guessLetter} `);
+                if(howMuch > 1){
+                    spot2 = letters.indexOf(guessLetter, spot1+1);
+                    emptyLetters.splice(spot2, 1, `${guessLetter} `);
+                } if(howMuch > 2){
+                    spot3 = letters.indexOf(guessLetter, spot2+1);
+                    emptyLetters.splice(spot3, 1, `${guessLetter} `);
+                } if(howMuch > 3){
+                    spot4 = letters.indexOf(guessLetter, spot3+1);
+                    emptyLetters.splice(spot4, 1, `${guessLetter} `);
+                } if(howMuch > 4){
+                    spot5 = letters.indexOf(guessLetter, spot4+1);
+                    emptyLetters.splice(spot5, 1, `${guessLetter} `);
+                } if(howMuch > 5){
+                    spot6 = letters.indexOf(guessLetter, spot5+1);
+                    emptyLetters.splice(spot6, 1, `${guessLetter} `);
+                }
+    
+                numHits += howMuch;
+                res.innerHTML = "";
+                emptyLetters.map(letter => res.innerHTML += letter);
+                document.getElementById('guessLetter').value = "";
+                document.getElementById('guessLetter').focus();
             }
-
-            numHits += howMuch;
-            res.innerHTML = "";
-            emptyLetters.map(letter => res.innerHTML += letter);
-            document.getElementById('guessLetter').value = "";
-            document.getElementById('guessLetter').focus();
         } else {
             mistakes++
             if(mistakes == 6){
