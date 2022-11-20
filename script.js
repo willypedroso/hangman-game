@@ -12,6 +12,7 @@ const words = [
 
 var letters = [];
 var emptyLetters = [];
+var wrongLetters = [];
 var mistakes = 0;
 var numLetters = 0;
 var numHits = 0;
@@ -19,6 +20,7 @@ var startOk = false;
 
 const res = document.getElementById('res');
 const mistakesDiv = document.getElementById('mistakes');
+const wrongLettersDiv = document.getElementById('wrongLetters');
 const guessBtn = document.getElementById('guessBtn');
 
 var spot1 = 0;
@@ -33,7 +35,9 @@ function start(){
     document.getElementById('main').style.display = "flex";
     document.getElementById('gameTitle').style.display = "block";
     mistakesDiv.style.display = "none";
+    wrongLettersDiv.style.display = "none";
     emptyLetters = [];
+    wrongLetters = [];
     res.innerHTML = "";
     mistakes = 0;
     numHits = 0;
@@ -71,8 +75,6 @@ function guess(){
     if(guessLetter == ""){
         alert('Try to type a letter first.')
     } else {
-        mistakesDiv.style.display = "block";
-        
         if(letters.includes(guessLetter)){
             if(emptyLetters.includes(`${guessLetter} `)){
                 alert('You already got this one right! Try another letter...');
@@ -107,24 +109,35 @@ function guess(){
                 document.getElementById('guessLetter').focus();
             }
         } else {
-            mistakes++
-            if(mistakes == 6){
-                document.getElementById('final').style.display = "flex";
-                document.getElementById('gameTitle').style.display = "none";
-                document.getElementById('finalMsg').innerHTML = "YOU LOSE!";
-                document.getElementById('main').style.display = "none";
-                document.getElementById('guessLetter').value = "";
-                startOk = false;
-            } else {
-                mistakesDiv.innerHTML = `Wrong! You still have ${6-mistakes} tries`;
+            if(wrongLetters.includes(guessLetter)){
+                alert('You already tried this letter!');
                 document.getElementById('guessLetter').value = "";
                 document.getElementById('guessLetter').focus();
-            }
+            } else {
+                mistakes++;
+                if(mistakes == 6){
+                    document.getElementById('final').style.display = "flex";
+                    document.getElementById('gameTitle').style.display = "none";
+                    document.getElementById('finalMsg').innerHTML = "YOU LOSE!";
+                    document.getElementById('main').style.display = "none";
+                    document.getElementById('guessLetter').value = "";
+                    startOk = false;
+                } else {
+                    mistakesDiv.style.display = "block";
+                    wrongLettersDiv.style.display = "block";
+                    wrongLettersDiv.innerHTML = "";
+                    mistakesDiv.innerHTML = `Wrong! You still have ${6-mistakes} tries`;
+                    wrongLetters.push(guessLetter);
+                    wrongLetters.map(letter => wrongLettersDiv.innerHTML += `${letter} `);
+                    document.getElementById('guessLetter').value = "";
+                    document.getElementById('guessLetter').focus();
+                };
+            };
         };
         if(numHits == numLetters){
             document.getElementById('final').style.display = "flex";
             document.getElementById('gameTitle').style.display = "none";
-            document.getElementById('finalMsg').innerHTML = "CONGRATS! YOU WON!";
+            document.getElementById('finalMsg').innerHTML = `CONGRATS! YOU WON!`;
             document.getElementById('main').style.display = "none";
             document.getElementById('guessLetter').value = "";
             startOk = false;

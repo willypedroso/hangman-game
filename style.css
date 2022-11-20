@@ -85,6 +85,13 @@ input {
     margin: 10px;
 }
 
+#wrongLetters {
+    display: none;
+    margin: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+
 #final {
     display: none;
     flex-direction: column;
