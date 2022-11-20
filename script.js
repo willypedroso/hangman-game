@@ -21,6 +21,13 @@ const res = document.getElementById('res');
 const mistakesDiv = document.getElementById('mistakes');
 const guessBtn = document.getElementById('guessBtn');
 
+var spot1 = 0;
+var spot2 = 0;
+var spot3 = 0;
+var spot4 = 0;
+var spot5 = 0;
+var spot6 = 0;
+
 function start(){
     startOk = true;
     document.getElementById('main').style.display = "flex";
@@ -67,9 +74,28 @@ function guess(){
         mistakesDiv.style.display = "block";
         
         if(letters.includes(guessLetter)){
-            let spot = letters.indexOf(guessLetter);
-            emptyLetters.splice(spot, 1, `${guessLetter} `);
-            numHits++
+            let howMuch = letters.filter(x => x === guessLetter).length;
+            console.log(howMuch);
+            spot1 = letters.indexOf(guessLetter);
+            emptyLetters.splice(spot1, 1, `${guessLetter} `);
+            if(howMuch > 1){
+                spot2 = letters.indexOf(guessLetter, spot1+1);
+                emptyLetters.splice(spot2, 1, `${guessLetter} `);
+            } if(howMuch > 2){
+                spot3 = letters.indexOf(guessLetter, spot2+1);
+                emptyLetters.splice(spot3, 1, `${guessLetter} `);
+            } if(howMuch > 3){
+                spot4 = letters.indexOf(guessLetter, spot3+1);
+                emptyLetters.splice(spot4, 1, `${guessLetter} `);
+            } if(howMuch > 4){
+                spot5 = letters.indexOf(guessLetter, spot4+1);
+                emptyLetters.splice(spot5, 1, `${guessLetter} `);
+            } if(howMuch > 5){
+                spot6 = letters.indexOf(guessLetter, spot5+1);
+                emptyLetters.splice(spot6, 1, `${guessLetter} `);
+            }
+
+            numHits += howMuch;
             res.innerHTML = "";
             emptyLetters.map(letter => res.innerHTML += letter);
             document.getElementById('guessLetter').value = "";
