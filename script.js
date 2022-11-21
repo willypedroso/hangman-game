@@ -16,6 +16,7 @@ const words = [
     "EXPRESS"
 ];
 
+var randomWord = "";
 var letters = [];
 var emptyLetters = [];
 var wrongLetters = [];
@@ -49,7 +50,7 @@ function start(){
     numHits = 0;
 
     var random = Math.floor(Math.random()*words.length);
-    var randomWord = words[random];
+    randomWord = words[random];
     letters = randomWord.split("");
     numLetters = letters.length;
     for(i=0;i<letters.length;i++){
@@ -122,9 +123,12 @@ function guess(){
             } else {
                 mistakes++;
                 if(mistakes == 6){
+                    window.innerWidth < 940 ? document.body.style.fontSize = "1rem" :
+                        document.body.style.fontSize = "2rem";
                     document.getElementById('final').style.display = "flex";
                     document.getElementById('gameTitle').style.display = "none";
                     document.getElementById('finalMsg').innerHTML = "YOU LOSE!";
+                    document.getElementById('finalWord').innerHTML = `THE WORD WAS <h1>"${randomWord}"</h1>`;
                     document.getElementById('main').style.display = "none";
                     document.getElementById('guessLetter').value = "";
                     startOk = false;
@@ -141,9 +145,13 @@ function guess(){
             };
         };
         if(numHits == numLetters){
+            window.innerWidth < 940 && randomWord.length > 6 ? document.body.style.fontSize = "0.6rem" :
+                window.innerWidth < 940 ? document.body.style.fontSize = "0.9rem" :
+                document.body.style.fontSize = "1.9rem";
             document.getElementById('final').style.display = "flex";
             document.getElementById('gameTitle').style.display = "none";
-            document.getElementById('finalMsg').innerHTML = `CONGRATS! YOU WON!`;
+            document.getElementById('finalMsg').innerHTML = `CONGRATS! <h1 style='text-align: center;'>YOU WON!</h1>`;
+            document.getElementById('finalWord').innerHTML = `THE WORD WAS <h1>"${randomWord}"</h1>`;
             document.getElementById('main').style.display = "none";
             document.getElementById('guessLetter').value = "";
             startOk = false;

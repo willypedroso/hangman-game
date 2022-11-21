@@ -95,8 +95,14 @@ input {
 #final {
     display: none;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+#finalMsg, #finalWord {
+    margin-top: 20px;
     text-align: center;
 }
 
