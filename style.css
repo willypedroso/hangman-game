@@ -11,7 +11,8 @@ body {
     align-items: center;
     flex-wrap: wrap;
     min-height: 100vh;
-    background-image: linear-gradient(to bottom right, rgb(158, 68, 68), rgb(83, 0, 0));
+    background-image: linear-gradient(to bottom right, #222, #444);
+    color: #fff;
     background-attachment: fixed;
     font-family: 'Sono', sans-serif;
     font-size: 2rem;
