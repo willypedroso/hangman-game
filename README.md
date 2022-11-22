@@ -1,4 +1,4 @@
-<img style= "text-align: center;" src="./images/hangman-6-errors"/>
+<img src="./images/hangman-6-errors"/>
 
 # The Hangman Game
 
