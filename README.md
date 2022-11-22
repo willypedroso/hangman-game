@@ -1,4 +1,4 @@
-<img src="./images/hangman-6-errors"/>
+<div align="center"><a href="#" target="_blank"><img src="./images/hangman-6-errors.png" alt="Gitflix logo"/></a></div>
 
 # The Hangman Game
 
