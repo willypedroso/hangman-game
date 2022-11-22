@@ -29,6 +29,7 @@ const res = document.getElementById('res');
 const mistakesDiv = document.getElementById('mistakes');
 const wrongLettersDiv = document.getElementById('wrongLetters');
 const guessBtn = document.getElementById('guessBtn');
+const hangmanImage =  document.getElementById('hangmanImage');
 
 var spot1 = 0;
 var spot2 = 0;
@@ -43,6 +44,7 @@ function start(){
     document.getElementById('gameTitle').style.display = "block";
     mistakesDiv.style.display = "none";
     wrongLettersDiv.style.display = "none";
+    hangmanImage.src = "./images/hangman-0-errors.png";
     emptyLetters = [];
     wrongLetters = [];
     res.innerHTML = "";
@@ -131,12 +133,31 @@ function guess(){
                     document.getElementById('finalWord').innerHTML = `THE WORD WAS <h1>"${randomWord}"</h1>`;
                     document.getElementById('main').style.display = "none";
                     document.getElementById('guessLetter').value = "";
+                    hangmanImage.src = "./images/hangman-6-errors.png";
                     startOk = false;
                 } else {
                     mistakesDiv.style.display = "block";
                     wrongLettersDiv.style.display = "block";
                     wrongLettersDiv.innerHTML = "";
-                    mistakesDiv.innerHTML = `Wrong! You still have ${6-mistakes} tries`;
+
+                    switch(6-mistakes){
+                        case 5:
+                            hangmanImage.src = "./images/hangman-1-errors.png";
+                            break;
+                        case 4:
+                            hangmanImage.src = "./images/hangman-2-errors.png";
+                            break;
+                        case 3:
+                            hangmanImage.src = "./images/hangman-3-errors.png";
+                            break;
+                        case 2:
+                            hangmanImage.src = "./images/hangman-4-errors.png";
+                            break;
+                        case 1:
+                            hangmanImage.src = "./images/hangman-5-errors.png";
+                    }
+
+                    //mistakesDiv.innerHTML = `Wrong! You still have ${6-mistakes} tries`;
                     wrongLetters.push(guessLetter);
                     wrongLetters.map(letter => wrongLettersDiv.innerHTML += `${letter} `);
                     document.getElementById('guessLetter').value = "";

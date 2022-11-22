@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="gameTitle">HANGMAN</h1>
     <main id="main">
+        <h1 id="gameTitle">HANGMAN</h1>
         <input type="button" value="START" id="btnStart" onclick="start()">
 
         <div id="guess">
@@ -20,13 +20,16 @@
 
         <div id="res"></div>
 
-        <div id="mistakes"></div>
+        <div id="mistakes">Wrong letters:</div>
         <div id="wrongLetters"></div>
     </main>
     <div id="final">
         <h1 id="finalMsg"></h1>
         <h1 id="finalWord"></h1>
         <input type="button" value="PLAY AGAIN" id="btnPlayAgain" onclick="start()">
+    </div>
+    <div id="hangman">
+        <img id="hangmanImage" src="./images/hangman-0-errors.png" alt="The Hangman">
     </div>
 </body>
 <script src="./script.js"></script>
