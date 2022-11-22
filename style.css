@@ -11,7 +11,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     min-height: 100vh;
-    background-image: linear-gradient(to bottom right, #222, #444);
+    background-image: linear-gradient(to bottom right, #111, #444);
     color: #fff;
     background-attachment: fixed;
     font-family: 'Sono', sans-serif;
@@ -73,6 +73,10 @@ input {
     font-variant: small-caps;
 }
 
+#tip {
+    display: none;
+}
+
 #res {
     display: none;
     justify-content: center;
@@ -89,6 +93,7 @@ input {
     font-size: 1rem;
     text-align: center;
     margin: 10px;
+    margin-bottom: -6px;
 }
 
 #wrongLetters {

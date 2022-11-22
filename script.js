@@ -1,3 +1,4 @@
+// Game Words
 const words = [
     "NODE",
     "REACT",
@@ -16,6 +17,7 @@ const words = [
     "EXPRESS"
 ];
 
+// Initializing variables
 var randomWord = "";
 var letters = [];
 var emptyLetters = [];
@@ -30,6 +32,7 @@ const mistakesDiv = document.getElementById('mistakes');
 const wrongLettersDiv = document.getElementById('wrongLetters');
 const guessBtn = document.getElementById('guessBtn');
 const hangmanImage =  document.getElementById('hangmanImage');
+const tipsDiv = document.getElementById('tip');
 
 var spot1 = 0;
 var spot2 = 0;
@@ -38,6 +41,7 @@ var spot4 = 0;
 var spot5 = 0;
 var spot6 = 0;
 
+// Functions
 function start(){
     startOk = true;
     document.getElementById('main').style.display = "flex";
@@ -157,7 +161,6 @@ function guess(){
                             hangmanImage.src = "./images/hangman-5-errors.png";
                     }
 
-                    //mistakesDiv.innerHTML = `Wrong! You still have ${6-mistakes} tries`;
                     wrongLetters.push(guessLetter);
                     wrongLetters.map(letter => wrongLettersDiv.innerHTML += `${letter} `);
                     document.getElementById('guessLetter').value = "";
@@ -165,6 +168,8 @@ function guess(){
                 };
             };
         };
+
+        // User wins
         if(numHits == numLetters){
             window.innerWidth < 940 && randomWord.length > 6 ? document.body.style.fontSize = "0.6rem" :
                 window.innerWidth < 940 ? document.body.style.fontSize = "0.9rem" :
