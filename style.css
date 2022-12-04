@@ -20,6 +20,11 @@ body {
     font-size: 2rem;
 }
 
+#gameTitle {
+    text-align: center;
+    font-size: 2rem;
+}
+
 #mainScreen {
     display: flex;
     justify-content: center;
