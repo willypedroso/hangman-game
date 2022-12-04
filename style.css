@@ -7,6 +7,7 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -17,6 +18,14 @@ body {
     background-attachment: fixed;
     font-family: 'Sono', sans-serif;
     font-size: 2rem;
+}
+
+#mainScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
 }
 
 h1 {
@@ -136,7 +145,6 @@ input {
 }
 
 footer {
-    position: fixed;
     bottom: 10px;
     text-align: center;
     font-size: 1rem;

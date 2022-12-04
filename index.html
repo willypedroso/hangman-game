@@ -8,29 +8,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main id="main">
-        <h1 id="gameTitle">HANGMAN</h1>
-        <input type="button" value="START" id="btnStart" onclick="start()">
-
-        <div id="guess">
-            <p style="font-size: 1.2rem;">Guess a letter:</p>
-            <input type="text" id="guessLetter" maxlength="1">
-            <input type="button" id="guessBtn" value="GUESS" onclick="guess()">
+    <div id="mainScreen">
+        <main id="main">
+            <h1 id="gameTitle">HANGMAN</h1>
+            <input type="button" value="START" id="btnStart" onclick="start()">
+            <div id="guess">
+                <p style="font-size: 1.2rem;">Guess a letter:</p>
+                <input type="text" id="guessLetter" maxlength="1">
+                <input type="button" id="guessBtn" value="GUESS" onclick="guess()">
+            </div>
+            <div id="tip">Tip here</div>
+            <div id="res"></div>
+            <div id="mistakes">Wrong letters:</div>
+            <div id="wrongLetters"></div>
+        </main>
+        <div id="final">
+            <h1 id="finalMsg"></h1>
+            <h1 id="finalWord"></h1>
+            <input type="button" value="PLAY AGAIN" id="btnPlayAgain" onclick="start()">
         </div>
-
-        <div id="tip">Tip here</div>
-        <div id="res"></div>
-
-        <div id="mistakes">Wrong letters:</div>
-        <div id="wrongLetters"></div>
-    </main>
-    <div id="final">
-        <h1 id="finalMsg"></h1>
-        <h1 id="finalWord"></h1>
-        <input type="button" value="PLAY AGAIN" id="btnPlayAgain" onclick="start()">
-    </div>
-    <div id="hangman">
-        <img id="hangmanImage" src="./images/hangman-0-errors.png" alt="The Hangman">
+        <div id="hangman">
+            <img id="hangmanImage" src="./images/hangman-0-errors.png" alt="The Hangman">
+        </div>
     </div>
     <footer>
         <p>Develop by <a href="https://github.com/willypedroso" target="_blank" rel="noreferrer noopener">Will Pedroso</a></p>
