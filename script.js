@@ -14,7 +14,8 @@ const words = [
     "NEXT",
     "JAVA",
     "SWIFT",
-    "EXPRESS"
+    "EXPRESS",
+    "AXIOS"
 ];
 
 // Initializing variables
@@ -92,6 +93,9 @@ function getTip(word){
         case "EXPRESS":
             t = "It's a back-end web application framework.";
             break;
+        case "AXIOS":
+            t = "It's a promised-based HTTP client for JavaScript.";
+            break;
     }
     return t;
 }
@@ -143,6 +147,9 @@ function getFinalLink(word){
             break;
         case "EXPRESS":
             f = "https://expressjs.com/";
+            break;
+        case "AXIOS":
+            f = "https://axios-http.com/docs/intro";
             break;
     }
     return f;
