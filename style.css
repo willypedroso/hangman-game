@@ -25,6 +25,8 @@ h1 {
 
 #hangmanImage {
     width: 400px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 15px black;
 }
 
 main {
