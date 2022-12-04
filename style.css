@@ -134,3 +134,21 @@ input {
     color: #fff;
     border-radius: 20px;
 }
+
+footer {
+    position: fixed;
+    bottom: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+footer a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+footer a:hover {
+    color: rgb(0, 104, 0);
+    text-shadow: 1px 1px 1px black;
+}
