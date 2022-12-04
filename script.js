@@ -26,6 +26,7 @@ var mistakes = 0;
 var numLetters = 0;
 var numHits = 0;
 var startOk = false;
+var tip = "";
 
 const res = document.getElementById('res');
 const mistakesDiv = document.getElementById('mistakes');
@@ -42,10 +43,63 @@ var spot5 = 0;
 var spot6 = 0;
 
 // Functions
+function getTip(word){
+    let t = "";
+    switch(word){
+        case "NODE":
+            t = "It's an open-source server environment.";
+            break;
+        case "REACT":
+            t = "It's a front-end Javascript library.";
+            break;
+        case "NPM":
+            t = "It's a package manager.";
+            break;
+        case "VUE":
+            t = "It's a front-end Javascript library.";
+            break;
+        case "ANGULAR":
+            t = "It's a front-end Javascript library.";
+            break;
+        case "JAVASCRIPT":
+            t = "It's a programming language.";
+            break;
+        case "HTML":
+            t = "It's a markup language.";
+            break;
+        case "CSS":
+            t = "It's a style sheet language.";
+            break;
+        case "TAILWIND":
+            t = "It's a CSS framework library.";
+            break;
+        case "PYTHON":
+            t = "It's a programming language.";
+            break;
+        case "VITE":
+            t = "It's a rapid development tool.";
+            break;
+        case "NEXT":
+            t = "It's a web development framework.";
+            break;
+        case "JAVA":
+            t = "It's a programming language.";
+            break;
+        case "SWIFT":
+            t = "It's a programming language.";
+            break;
+        case "EXPRESS":
+            t = "It's a back-end web application framework.";
+            break;
+    }
+    return t;
+}
+
 function start(){
     startOk = true;
     document.getElementById('main').style.display = "flex";
     document.getElementById('gameTitle').style.display = "block";
+    tipsDiv.style.display = "block";
     mistakesDiv.style.display = "none";
     wrongLettersDiv.style.display = "none";
     hangmanImage.src = "./images/hangman-0-errors.png";
@@ -62,6 +116,10 @@ function start(){
     for(i=0;i<letters.length;i++){
         emptyLetters.push("_ ");
     };
+
+    tip = getTip(randomWord);
+
+    tipsDiv.innerHTML = `Tip: ${tip}`;
 
     console.log(emptyLetters);
     document.getElementById('btnStart').style.display = "none";
