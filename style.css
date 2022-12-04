@@ -11,6 +11,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     min-height: 100vh;
+    gap: 25px;
     background-image: linear-gradient(to bottom right, #111, #444);
     color: #fff;
     background-attachment: fixed;
@@ -23,7 +24,6 @@ h1 {
 }
 
 #hangmanImage {
-    margin-left: 15px;
     width: 400px;
 }
 
@@ -32,8 +32,11 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
     border: 3px solid #000;
+    background-color: rgb(245, 227, 227);
+    color: black;
+    box-shadow: 5px 5px 15px black;
 }
 
 #btnStart {
