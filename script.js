@@ -27,6 +27,7 @@ var numLetters = 0;
 var numHits = 0;
 var startOk = false;
 var tip = "";
+var finalLink = "";
 
 const res = document.getElementById('res');
 const mistakesDiv = document.getElementById('mistakes');
@@ -95,6 +96,58 @@ function getTip(word){
     return t;
 }
 
+function getFinalLink(word){
+    let f = "";
+    switch(word){
+        case "NODE":
+            f = "https://nodejs.org/";
+            break;
+        case "REACT":
+            f = "https://reactjs.org/";
+            break;
+        case "NPM":
+            f = "https://www.npmjs.com/";
+            break;
+        case "VUE":
+            f = "https://vuejs.org/";
+            break;
+        case "ANGULAR":
+            f = "https://angular.io/";
+            break;
+        case "JAVASCRIPT":
+            f = "https://www.javascript.com/";
+            break;
+        case "HTML":
+            f = "https://www.w3schools.com/html/";
+            break;
+        case "CSS":
+            f = "https://www.w3schools.com/css/";
+            break;
+        case "TAILWIND":
+            f = "https://tailwindcss.com/";
+            break;
+        case "PYTHON":
+            f = "https://www.python.org/";
+            break;
+        case "VITE":
+            f = "https://vitejs.dev/";
+            break;
+        case "NEXT":
+            f = "https://nextjs.org/";
+            break;
+        case "JAVA":
+            f = "https://www.java.com/";
+            break;
+        case "SWIFT":
+            f = "https://developer.apple.com/swift/";
+            break;
+        case "EXPRESS":
+            f = "https://expressjs.com/";
+            break;
+    }
+    return f;
+}
+
 function start(){
     startOk = true;
     document.getElementById('main').style.display = "flex";
@@ -121,12 +174,10 @@ function start(){
 
     tipsDiv.innerHTML = `Tip: ${tip}`;
 
-    console.log(emptyLetters);
     document.getElementById('btnStart').style.display = "none";
     res.style.display = "flex";
     document.getElementById('guess').style.display = "flex";
     document.getElementById('guessLetter').focus();
-    console.log(randomWord);
     emptyLetters.map(letter => res.innerHTML += letter);
     document.getElementById('final').style.display = "none";
 };
@@ -153,7 +204,6 @@ function guess(){
                 document.getElementById('guessLetter').focus();
             } else {
                 let howMuch = letters.filter(x => x === guessLetter).length;
-                console.log(howMuch);
                 spot1 = letters.indexOf(guessLetter);
                 emptyLetters.splice(spot1, 1, `${guessLetter} `);
                 if(howMuch > 1){
@@ -187,12 +237,15 @@ function guess(){
             } else {
                 mistakes++;
                 if(mistakes == 6){
-                    window.innerWidth < 940 ? document.body.style.fontSize = "1rem" :
-                        document.body.style.fontSize = "2rem";
+                    window.innerWidth < 940 && randomWord.length > 6 ? document.body.style.fontSize = "0.6rem" :
+                        window.innerWidth < 940 ? document.body.style.fontSize = "0.9rem" :
+                        document.body.style.fontSize = "1.3rem";
+                    finalLink = getFinalLink(randomWord);
                     document.getElementById('final').style.display = "flex";
                     document.getElementById('gameTitle').style.display = "none";
                     document.getElementById('finalMsg').innerHTML = "YOU LOSE!";
                     document.getElementById('finalWord').innerHTML = `THE WORD WAS <h1>"${randomWord}"</h1>`;
+                    document.getElementById('finalLink').innerHTML = `<a href=${finalLink} target="_blank" rel="noreferrer noopener">${finalLink}</a>`;
                     document.getElementById('main').style.display = "none";
                     document.getElementById('guessLetter').value = "";
                     hangmanImage.src = "./images/hangman-6-errors.png";
@@ -231,11 +284,13 @@ function guess(){
         if(numHits == numLetters){
             window.innerWidth < 940 && randomWord.length > 6 ? document.body.style.fontSize = "0.6rem" :
                 window.innerWidth < 940 ? document.body.style.fontSize = "0.9rem" :
-                document.body.style.fontSize = "1.9rem";
+                document.body.style.fontSize = "1.3rem";
+            finalLink = getFinalLink(randomWord);
             document.getElementById('final').style.display = "flex";
             document.getElementById('gameTitle').style.display = "none";
             document.getElementById('finalMsg').innerHTML = `CONGRATS! <h1 style='text-align: center;'>YOU WON!</h1>`;
             document.getElementById('finalWord').innerHTML = `THE WORD WAS <h1>"${randomWord}"</h1>`;
+            document.getElementById('finalLink').innerHTML = `<a href=${finalLink} target="_blank" rel="noreferrer noopener">${finalLink}</a>`;
             document.getElementById('main').style.display = "none";
             document.getElementById('guessLetter').value = "";
             startOk = false;
